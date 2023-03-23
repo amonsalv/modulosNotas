@@ -1,8 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
-import { useState } from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
-import { TextInput } from 'react-native-web';
-import { TouchableOpacity } from 'react-native-web';
+import { useState } from 'react'; //llamamos el hook Usestate para guardar el arreglo
+import { StyleSheet, Text, View } from 'react-native';
+import { TextInput } from 'react-native';
+import { TouchableOpacity } from 'react-native';//actulizacion de react, ya no hay react-native-web
 
 
 export default function App() {
