@@ -2,8 +2,11 @@ import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
 import { TextInput } from 'react-native-web';
+import { TouchableOpacity } from 'react-native-web';
+
 
 export default function App() {
+  //definimos las variables del modulo de notas
   const [identificacion, setidentificacion] = useState('');
   const [nombres, setnombres] = useState('');
   const [asignatura, setasignatura] = useState('');
@@ -12,7 +15,7 @@ export default function App() {
   const [nota3, setnota3] = useState(0);
   const [definitiva, setdefinitiva] = useState(0);
   const [observacion, setobservacion] = useState('');
-  const [arrguadar, setguadar] = useState([]);
+  const [arrguadar, setguardar] = useState([]); //utilizamos el hook de Usestate para hacer un arreglo de objetos vacio, el cual nos va aguardar el contenido digitado
 
   const guardar = () => {
     let result = 0;
@@ -51,7 +54,7 @@ export default function App() {
       alert('La identificacion es requerida');
     }
 
-    setguadar((arrguadar) => [
+    setguardar((arrguadar) => [
       ...arrguadar,
       {
         identificacion,
@@ -163,32 +166,33 @@ export default function App() {
           />
         </View>
       </View>
-      <View style={styles.options}>
-        <Button
-          style={styles.optionsbuttons}
-          title={'Guardar/Calcular'}
-          color="#FAD9A1"
+      <View style={[styles.options, { marginTop: 20, flexDirection: 'row' }]}>
+
+
+        <TouchableOpacity
+          style={[styles.optionsbuttons, { backgroundColor: 'orange' }]}
           onPress={() => {
-            guardar();
-          }}
-        />
-        <Button
-          style={styles.optionsbuttons}
-          title={'Limpiar'}
-          color="#F37878"
+            guardar(); //llamamos el guardar junto con el calcular
+          }}>
+          <Text style={styles.buttonText}>Guardar{'\n'}Calcular</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={[styles.optionsbuttons, { backgroundColor: '#F37878' }]}
           onPress={() => {
-            limpiar();
-          }}
-        />
-        <Button
-          style={styles.optionsbuttons}
-          title={'Buscar'}
-          color="#ECB390"
+            limpiar(); //llamamos el limpiar
+          }}>
+          <Text style={styles.buttonText}>Limpiar</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={[styles.optionsbuttons, { backgroundColor: '#ECB390' }]}
           onPress={() => {
-            buscar(identificacion);
-          }}
-        />
-        
+            buscar(identificacion); //llamamos el buscar
+          }}>
+          <Text style={styles.buttonText}>Buscar</Text>
+        </TouchableOpacity>
+
       </View>
     </View>
   );
@@ -219,6 +223,7 @@ const styles = StyleSheet.create({
   buttons: {
     borderBottomWidth: '1px',
     marginLeft: '30px',
+    justifyContent: 'center',
   },
   options: {
     display: 'flex',
@@ -230,11 +235,13 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     padding: 10,
     width: 80,
-    color: '#FFF',
-    width: '20px',
-    marginLeft: '2rem',
+    marginLeft: '30px',
     color: '',
     justifyContent: 'center',
     alignItems: 'center'
   },
+  buttonText: {
+    color: 'white',
+    fontWeight: 'bold'
+  }
 });
