@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { useState } from 'react'; //llamamos el hook Usestate para guardar el arreglo
+import { useState } from 'react'; //lo utilizamos para agregar estado a un componente funcional, lo que significa que te permite almacenar datos en el componente y actualizarlos según sea necesario.
 import { StyleSheet, Text, View } from 'react-native';
 import { TextInput } from 'react-native';
 import { TouchableOpacity } from 'react-native';//actulizacion de react, ya no hay react-native-web
@@ -15,8 +15,7 @@ export default function App() {
   const [nota3, setnota3] = useState(0);
   const [definitiva, setdefinitiva] = useState(0);
   const [observacion, setobservacion] = useState('');
-  const [arrguadar, setguardar] = useState([]); //utilizamos el hook de Usestate para hacer un arreglo de objetos vacio, el cual nos va aguardar el contenido digitado
-
+  const [arrguadar, setguardar] = useState([]); //declaramos una variable llamada arrguadar que representa el estado actual de un componente de React, y una función llamada setguardar que se utiliza para actualizar ese estado. Además, inicializa el estado con un array vacío.
   const guardar = () => {
     let result = 0;
     let observ = '';
